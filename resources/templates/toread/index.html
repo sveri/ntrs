@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a href="/toread/create" class="btn btn-primary" role="button">Create New toread</a>
+
+<hr>
+
+<table class="table">
+    <thead>
+        <tr>
+            {% for col in cols %}
+                <td><b>{{col}}</b></td>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for toread in toreads %}
+            <tr>
+                <td><a href="/toread/{{toread.UUID}}">{{toread.TITLE}}</a></td>
+				<td>{{toread.LINK}}</td><td>{{toread.DESCRIPTION}}</td><td>{{toread.DONE}}</td><td>{{toread.TAGS}}</td><td>{{toread.AUTHOR}}</td>
+				<td><a class="btn btn-primary" href="/toread/delete/{{toread.UUID}}">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
