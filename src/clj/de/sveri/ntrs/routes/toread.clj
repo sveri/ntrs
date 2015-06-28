@@ -4,12 +4,14 @@
             [ring.util.response :refer [response content-type]]
             [taoensso.timbre :as timb]
             [de.sveri.ntrs.db.toread :as db]
-            [de.sveri.ntrs.layout :as layout]))
+            [de.sveri.ntrs.layout :as layout]
+            [de.sveri.ntrs.service.user :as serv]))
 
 (defn convert-boolean [b] (if (= "on" b) true false))
 
 (defn index-page []
-  (layout/render "/toread/index.html" {:toreads (db/get-all-toreads) :cols ["title" "link" "description" "done" "tags" "author" ]}))
+  (layout/render "/toread/index.html" {:toreads (db/get-all-toreads (serv/get-logged-in-username))
+                                       :cols ["title" "link" "description" "done" "tags" "author" ]}))
 
 (defn create-page []
   (layout/render "/toread/create.html" {:create_update "Create"}))
@@ -23,7 +25,7 @@
 
 (defn create [title link description done tags author ]
   (try
-    (db/create-toread title link description (convert-boolean done) tags author )
+    (db/create-toread title link description (convert-boolean done) tags author (serv/get-logged-in-username))
     (catch Exception e (timb/error e "Something went wrong creating toread.")
                        (layout/flash-result (str "An error occured.") "alert-danger")))
   (resp/redirect "/toread"))

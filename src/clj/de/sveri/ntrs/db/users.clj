@@ -3,6 +3,8 @@
             [korma.db :refer [h2]])
   (:import (java.util UUID)))
 
+(declare user)
+
 (defentity user)
 
 (defn get-all-users [ & [where-email-like]]

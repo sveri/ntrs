@@ -15,6 +15,8 @@
              :handler admin-access}
             {:pattern #"^/user/changepassword"
              :handler loggedin-access}
+            {:pattern #"^/toread.*"
+             :handler loggedin-access}
             {:pattern #"^/user.*"
              :handler unauthorized-access}
             {:pattern #"^/"
