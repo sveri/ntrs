@@ -7,11 +7,11 @@ Best Regards,
 
 Your Team"
  :activation-placeholder  "{{activationlink}}"
- :smtp-data               {}                                ; passed directly to postmap like {:host "postfix"}
+ :smtp-data               {:host "localhost"}                                ; passed directly to postmap like {:host "postfix"}
  :jdbc-url                "jdbc:h2:./db/korma.db"
  :env                     :dev
  ; set this to true to enable self registration
  :registration-allowed?   true
- :captcha-public-key      "foo"
- :private-recaptcha-key   "foo"
- :recaptcha-domain        "foo"}
+ :captcha-public-key      "6LeNS-kSAAAAAOBjdnOa8DxOOrfp-KKw0WG21Nus"
+ :private-recaptcha-key   "6LeNS-kSAAAAADnNw9TD7Qrh8NqQQ3ogtrujjrfS"
+ :recaptcha-domain        "sveri.de"}
