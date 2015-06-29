@@ -10,18 +10,18 @@
 (defn convert-boolean [b] (if (= "on" b) true false))
 
 (defn index-page []
-  (layout/render "/toread/index.html" {:toreads (db/get-all-toreads (serv/get-logged-in-username))
+  (layout/render "toread/index.html" {:toreads (db/get-all-toreads (serv/get-logged-in-username))
                                        :cols ["title" "link" "description" "done" "tags" "author" ]}))
 
 (defn create-page []
-  (layout/render "/toread/create.html" {:create_update "Create"}))
+  (layout/render "toread/create.html" {:create_update "Create"}))
 
 (defn update-page [uuid]
   (let [toread (db/get-toread-by-uuid uuid)]
-    (layout/render "/toread/create.html" {:toread toread :create_update "Update"})))
+    (layout/render "toread/create.html" {:toread toread :create_update "Update"})))
 
 (defn delete-page [uuid]
-  (layout/render "/toread/delete.html" {:uuid uuid}))
+  (layout/render "toread/delete.html" {:uuid uuid}))
 
 (defn create [title link description done tags author ]
   (try
