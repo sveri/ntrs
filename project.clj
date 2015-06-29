@@ -111,8 +111,10 @@
                        :injections   [(require 'pjstadig.humane-test-output)
                                       (pjstadig.humane-test-output/activate!)]
 
-                       :joplin {:databases {:sql-dev {:type :sql, :url "jdbc:h2:./db/korma.db"}}
-                                :environments {:sql-dev-env [{:db :sql-dev, :migrator :sql-mig}]}}}
+                       :joplin {:databases {:sql-dev {:type :sql, :url "jdbc:h2:./db/korma.db"}
+                                            :sql-prod {:type :sql, :url "jdbc:h2:/var/data/ntrs.db"}}
+                                :environments {:sql-dev-env [{:db :sql-dev, :migrator :sql-mig}]
+                                               :sql-prod-env [{:db :sql-prod, :migrator :sql-mig}]}}}
 
              :uberjar {:auto-clean false                    ; not sure about this one
                        :omit-source true
