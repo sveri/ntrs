@@ -12,6 +12,6 @@ Your Team"
  :env                     :dev
  ; set this to true to enable self registration
  :registration-allowed?   true
- :captcha-public-key      "6LeNS-kSAAAAAOBjdnOa8DxOOrfp-KKw0WG21Nus"
- :private-recaptcha-key   "6LeNS-kSAAAAADnNw9TD7Qrh8NqQQ3ogtrujjrfS"
- :recaptcha-domain        "sveri.de"}
+ :captcha-public-key      ""
+ :private-recaptcha-key   ""
+ :recaptcha-domain        ""}
