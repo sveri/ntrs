@@ -17,8 +17,8 @@
     <tbody>
         {% for toread in toreads %}
             <tr>
-                <td><a href="/toread/{{toread.UUID}}">{{toread.TITLE}}</a></td>
-				<td>{{toread.LINK}}</td><td>{{toread.DESCRIPTION}}</td><td>{{toread.DONE}}</td><td>{{toread.TAGS}}</td><td>{{toread.AUTHOR}}</td>
+                <td><a href="/toread/{{toread.uuid}}">{{toread.title}}</a></td>
+				<td>{{toread.link}}</td><td>{{toread.description}}</td><td>{{toread.done}}</td><td>{{toread.tags}}</td><td>{{toread.author}}</td>
 				<td><a class="btn btn-primary" href="/toread/delete/{{toread.UUID}}">Delete</a></td>
             </tr>
         {% endfor %}

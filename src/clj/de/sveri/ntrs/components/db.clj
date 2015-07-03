@@ -6,6 +6,7 @@
   component/Lifecycle
   (start [component]
     (let [db-url (get-in config [:config :jdbc-url])]
+      (println db-url)
       (defdb db db-url))
     component)
   (stop [component] component))

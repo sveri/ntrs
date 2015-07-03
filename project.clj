@@ -38,6 +38,7 @@
                  [org.clojure/java.jdbc "0.3.7"]
                  [korma "0.4.1"]
                  [com.h2database/h2 "1.4.187"]
+                 [org.xerial/sqlite-jdbc "3.8.7"]
                  [joplin.core "0.2.9"]
 
                  [com.draines/postal "1.11.3"]
@@ -53,17 +54,20 @@
                  [datascript "0.11.3"]
                  [org.clojars.franks42/cljs-uuid-utils "0.1.3"]
 
-                 [net.tanesha.recaptcha4j/recaptcha4j "0.0.8"]]
+                 [net.tanesha.recaptcha4j/recaptcha4j "0.0.8"]
+                 ;[honeysql "0.6.1"]
+                 ;[oj "0.3.0"]
+                 ]
 
-  :plugins [[de.sveri/closp-crud "0.1.1"]
+  :plugins [[de.sveri/closp-crud "0.1.2"]
             [lein-cljsbuild "1.0.5"]
             [ragtime/ragtime.lein "0.3.8"]]
 
   ;database migrations
-  :joplin {:migrators {:sql-mig "joplin/migrators/sql"}}
+  :joplin {:migrators {:sql-mig "joplin/migrators/sql/sqlite"}}
 
-  :closp-crud {:jdbc-url "jdbc:h2:mem:test_mem"
-               :migrations-output-path "./resources/migrators/sql"
+  :closp-crud {:jdbc-url "jdbc:sqlite::memory:"
+               :migrations-output-path "./resources/migrators/sql/sqlite"
                :clj-src "src/clj"
                :ns-db "de.sveri.ntrs.db"
                :ns-routes "de.sveri.ntrs.routes"
@@ -111,8 +115,8 @@
                        :injections   [(require 'pjstadig.humane-test-output)
                                       (pjstadig.humane-test-output/activate!)]
 
-                       :joplin {:databases {:sql-dev {:type :sql, :url "jdbc:h2:./db/korma.db"}
-                                            :sql-prod {:type :sql, :url "jdbc:h2:/var/data/ntrs.db"}}
+                       :joplin {:databases {:sql-dev {:type :sql, :url "jdbc:sqlite:./db/sqlite.sqlite"}
+                                            :sql-prod {:type :sql, :url "jdbc:sqlite:/var/data/ntrs.db"}}
                                 :environments {:sql-dev-env [{:db :sql-dev, :migrator :sql-mig}]
                                                :sql-prod-env [{:db :sql-prod, :migrator :sql-mig}]}}}
 

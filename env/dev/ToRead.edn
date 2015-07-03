@@ -1,4 +1,4 @@
-{:name    "toreadex"
+{:name    "toreadee"
  :columns [[:id :int :null false :pk true :autoinc true]
            [:title [:varchar 300] :null false]
            [:link [:varchar 1000] :null false]

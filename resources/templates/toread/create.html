@@ -3,8 +3,14 @@
 
 <form action="/toread/{{create_update|lower}}" class="form" method="post">
     <input name="__anti-forgery-token" type="hidden" value="{{af-token}}"/>
-    <input name="uuid" type="hidden" value="{{toread.UUID}}"/>
-    <div class="form-group"><label for="title">title</label><input class="form-control" id="title" maxlength="300" name="title" required="required" value="{{toread.TITLE}}" /></div><div class="form-group"><label for="link">link</label><input class="form-control" id="link" maxlength="1000" name="link" required="required" value="{{toread.LINK}}" /></div><div class="form-group"><label for="description">description</label><textarea class="form-control" id="description" name="description"></textarea></div><div class="form-group"><label><input class="form-control" id="done" name="done" type="checkbox" />done</label></div><div class="form-group"><label for="tags">tags</label><textarea class="form-control" id="tags" name="tags"></textarea></div><div class="form-group"><label for="author">author</label><input class="form-control" id="author" maxlength="100" name="author" /></div>
+    <input name="uuid" type="hidden" value="{{toread.uuid}}"/>
+    <div class="form-group"><label for="title">title</label><input class="form-control" id="title" maxlength="300" name="title" required="required" value="{{toread.title}}" /></div>
+    <div class="form-group"><label for="link">link</label><input class="form-control" id="link" maxlength="1000" name="link" required="required" value="{{toread.link}}" /></div>
+    <div class="form-group"><label for="description">description</label><textarea class="form-control" id="descripion" name="description">{{toread.description}}</textarea></div>
+    <div class="form-group">
+      <label><input class="form-control" id="done" name="done" type="checkbox" {%if toread.done = 1 %}checked{% endif %} >done</label></div>
+    <div class="form-group"><label for="tags">tags</label><textarea class="form-control" id="tags" name="tags">{{toread.tags}}</textarea></div>
+    <div class="form-group"><label for="author">author</label><input class="form-control" id="author" maxlength="100" name="author" value="{{toread.author}}"/></div>
     <button class="btn btn-primary" type="submit">{{create_update}} toread</button>
 </form>
 
