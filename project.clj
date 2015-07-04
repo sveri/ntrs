@@ -116,7 +116,7 @@
                                       (pjstadig.humane-test-output/activate!)]
 
                        :joplin {:databases {:sql-dev {:type :sql, :url "jdbc:sqlite:./db/sqlite.sqlite"}
-                                            :sql-prod {:type :sql, :url "jdbc:sqlite:/var/data/ntrs.db"}}
+                                            :sql-prod {:type :sql, :url "jdbc:sqlite:/var/data/ntrs.sqlite"}}
                                 :environments {:sql-dev-env [{:db :sql-dev, :migrator :sql-mig}]
                                                :sql-prod-env [{:db :sql-prod, :migrator :sql-mig}]}}}
 
